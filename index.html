@@ -37,6 +37,8 @@ nav{
   border-bottom:1px solid rgba(26,110,255,0.15);
 }
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img { height: 35px; width: auto; display: block; } /* Logo Image Style */
+
 .logo-txt{font-size:1.6rem;font-weight:900;letter-spacing:0.12em;color:#fff;}
 .logo-txt span{color:var(--accent);}
 
@@ -102,7 +104,7 @@ h2 span{color:var(--blue);}
 .nft-card:hover{border-color:var(--accent); transform:translateY(-10px);}
 
 .nft-img-box { width: 100%; aspect-ratio: 1; overflow: hidden; background: #010816; display: flex; align-items: center; justify-content: center; position: relative;}
-.nft-img-box img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; }
+.nft-img-box img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; border: none; }
 .nft-placeholder { font-size: 3rem; font-weight: 900; color: rgba(26,110,255,0.2); position: absolute; z-index: 1; }
 
 .nft-info{padding:15px 5px; text-align: center;}
@@ -173,7 +175,10 @@ footer{padding:60px 32px; border-top:1px solid rgba(26,110,255,0.1); text-align:
 <body>
 
 <nav>
-  <a href="#" class="nav-logo"><div class="logo-txt">CHRONOS<span>.</span></div></a>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div class="logo-txt" id="logoText">CHRONOS<span>.</span></div>
+  </a>
   <ul class="nav-links">
     <li><a href="#collection">Collection</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -212,19 +217,31 @@ footer{padding:60px 32px; border-top:1px solid rgba(26,110,255,0.1); text-align:
   <h2>Cyber-Cyborg <span>Portraits</span></h2>
   <div class="nft-grid">
     <div class="nft-card">
-      <div class="nft-img-box"><img src="nft1.jpg" alt=""><div class="nft-placeholder">01</div></div>
+      <div class="nft-img-box">
+        <img src="nft1.jpg" alt="" onerror="this.style.opacity='0'">
+        <div class="nft-placeholder">01</div>
+      </div>
       <div class="nft-info"><div class="nft-name">Artifact Alpha</div></div>
     </div>
     <div class="nft-card">
-      <div class="nft-img-box"><img src="nft2.jpg" alt=""><div class="nft-placeholder">02</div></div>
+      <div class="nft-img-box">
+        <img src="nft2.jpg" alt="" onerror="this.style.opacity='0'">
+        <div class="nft-placeholder">02</div>
+      </div>
       <div class="nft-info"><div class="nft-name">Temporal Core</div></div>
     </div>
     <div class="nft-card">
-      <div class="nft-img-box"><img src="nft3.jpg" alt=""><div class="nft-placeholder">03</div></div>
+      <div class="nft-img-box">
+        <img src="nft3.jpg" alt="" onerror="this.style.opacity='0'">
+        <div class="nft-placeholder">03</div>
+      </div>
       <div class="nft-info"><div class="nft-name">Void Fragment</div></div>
     </div>
     <div class="nft-card">
-      <div class="nft-img-box"><img src="nft4.jpg" alt=""><div class="nft-placeholder">04</div></div>
+      <div class="nft-img-box">
+        <img src="nft4.jpg" alt="" onerror="this.style.opacity='0'">
+        <div class="nft-placeholder">04</div>
+      </div>
       <div class="nft-info"><div class="nft-name">Neo Chronos</div></div>
     </div>
   </div>
@@ -256,22 +273,10 @@ footer{padding:60px 32px; border-top:1px solid rgba(26,110,255,0.1); text-align:
       <p style="color: var(--accent); letter-spacing: 2px;">>_ NO WAIT-LIST. IT'S GTD.</p>
     </div>
     <form class="gform" id="gtdForm" action="https://formspree.io/f/maqpknnw" method="POST">
-      <div class="input-group">
-        <label>X Identification</label>
-        <input type="text" name="Twitter_Username" placeholder="@Username" class="fi" required>
-      </div>
-      <div class="input-group">
-        <label>Base Wallet Address</label>
-        <input type="text" name="Wallet_Address" placeholder="0x..." class="fi" required>
-      </div>
-      <div class="input-group">
-        <label>Like & RT Link</label>
-        <input type="url" name="Social_Engagement_Link" placeholder="https://x.com/..." class="fi" required>
-      </div>
-      <div class="input-group">
-        <label>Why you want GTD?</label>
-        <textarea name="Mission_Statement" placeholder="Your mission statement..." class="fta" required></textarea>
-      </div>
+      <div class="input-group"><label>X Identification</label><input type="text" name="Twitter_Username" placeholder="@Username" class="fi" required></div>
+      <div class="input-group"><label>Base Wallet Address</label><input type="text" name="Wallet_Address" placeholder="0x..." class="fi" required></div>
+      <div class="input-group"><label>Like & RT Link</label><input type="url" name="Social_Engagement_Link" placeholder="https://x.com/..." class="fi" required></div>
+      <div class="input-group"><label>Why you want GTD?</label><textarea name="Mission_Statement" placeholder="Your mission statement..." class="fta" required></textarea></div>
       <button type="submit" class="btn-sub">Submit & Claim GTD</button>
     </form>
   </div>
@@ -288,7 +293,7 @@ footer{padding:60px 32px; border-top:1px solid rgba(26,110,255,0.1); text-align:
 <div class="modal-overlay" id="modalSuccess">
   <div class="modal-box">
     <h3>DATA ENCRYPTED</h3>
-    <p>>_ Your GTD application has been successfully synchronized with the Base timeline. Check your email for validation status.</p>
+    <p>>_ Your GTD application has been successfully synchronized with the Base timeline. Validation in progress.</p>
     <button class="btn-close" onclick="closeModal('modalSuccess')">Acknowledge</button>
   </div>
 </div>
@@ -306,28 +311,33 @@ footer{padding:60px 32px; border-top:1px solid rgba(26,110,255,0.1); text-align:
   // Mobile Nav Toggle
   const mobBtn = document.getElementById('mob-btn');
   const mobDrawer = document.getElementById('mob-drawer');
+  
   mobBtn.addEventListener('click', () => { 
     mobBtn.classList.toggle('open'); 
     mobDrawer.classList.toggle('open'); 
   });
 
-  // Modal Control
+  // Close drawer on link click
+  document.querySelectorAll('.mob-drawer a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobBtn.classList.remove('open');
+      mobDrawer.classList.remove('open');
+    });
+  });
+
   function openModal(id) { document.getElementById(id).style.display = 'flex'; }
   function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-  // Form Submission handling with AJAX for Formspree
   const form = document.getElementById('gtdForm');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('.btn-sub');
     const originalText = btn.innerText;
     
-    // UI Effects
     btn.innerText = "ENCRYPTING...";
     btn.style.pointerEvents = "none";
     form.style.opacity = '0.5';
 
-    // Send Data to Formspree
     const data = new FormData(form);
     try {
       const response = await fetch(form.action, {
@@ -340,16 +350,23 @@ footer{padding:60px 32px; border-top:1px solid rgba(26,110,255,0.1); text-align:
         form.reset();
         openModal('modalSuccess');
       } else {
-        alert("Oops! There was a problem submitting your form.");
+        alert("Oops! Submission failed.");
       }
     } catch (error) {
-      alert("Error: Network issue or Formspree limit reached.");
+      alert("Error: Network issue.");
     } finally {
       form.style.opacity = '1';
       btn.innerText = originalText;
       btn.style.pointerEvents = "auto";
     }
   });
+
+  // Hide Text Logo if image logo is successfully loaded
+  const logoImg = document.querySelector('.nav-logo img');
+  const logoTxt = document.getElementById('logoText');
+  logoImg.onload = function() {
+    logoTxt.style.display = 'none';
+  };
 </script>
 </body>
 </html>
