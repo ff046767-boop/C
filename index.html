@@ -34,7 +34,6 @@
             color: var(--primary); 
             text-decoration: none; 
         }
-        /* Logo အပိုင်းကို ပြင်ဆင်ထားသည် */
         .logo img { 
             height: 40px; 
             width: auto; 
@@ -160,16 +159,27 @@
 
     <div class="slider-container">
         <div class="track">
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+1" alt="NFT 1"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+2" alt="NFT 2"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+3" alt="NFT 3"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+4" alt="NFT 4"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+5" alt="NFT 5"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+1" alt="NFT 1"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+2" alt="NFT 2"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+3" alt="NFT 3"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+4" alt="NFT 4"></div>
-            <div class="glass-card nft-item"><img src="https://via.placeholder.com/300x400/2ddb84/000000?text=Chronos+5" alt="NFT 5"></div>
+            <div class="glass-card nft-item"><img src="nft1.jpg" alt="Chronos #1"></div>
+            <div class="glass-card nft-item"><img src="nft2.jpg" alt="Chronos #2"></div>
+            <div class="glass-card nft-item"><img src="nft3.jpg" alt="Chronos #3"></div>
+            <div class="glass-card nft-item"><img src="nft4.jpg" alt="Chronos #4"></div>
+            <div class="glass-card nft-item"><img src="nft5.jpg" alt="Chronos #5"></div>
+            <div class="glass-card nft-item"><img src="nft6.jpg" alt="Chronos #6"></div>
+            <div class="glass-card nft-item"><img src="nft7.jpg" alt="Chronos #7"></div>
+            <div class="glass-card nft-item"><img src="nft8.jpg" alt="Chronos #8"></div>
+            <div class="glass-card nft-item"><img src="nft9.jpg" alt="Chronos #9"></div>
+            <div class="glass-card nft-item"><img src="nft10.jpg" alt="Chronos #10"></div>
+
+            <div class="glass-card nft-item"><img src="nft1.jpg" alt="Chronos #1"></div>
+            <div class="glass-card nft-item"><img src="nft2.jpg" alt="Chronos #2"></div>
+            <div class="glass-card nft-item"><img src="nft3.jpg" alt="Chronos #3"></div>
+            <div class="glass-card nft-item"><img src="nft4.jpg" alt="Chronos #4"></div>
+            <div class="glass-card nft-item"><img src="nft5.jpg" alt="Chronos #5"></div>
+            <div class="glass-card nft-item"><img src="nft6.jpg" alt="Chronos #6"></div>
+            <div class="glass-card nft-item"><img src="nft7.jpg" alt="Chronos #7"></div>
+            <div class="glass-card nft-item"><img src="nft8.jpg" alt="Chronos #8"></div>
+            <div class="glass-card nft-item"><img src="nft9.jpg" alt="Chronos #9"></div>
+            <div class="glass-card nft-item"><img src="nft10.jpg" alt="Chronos #10"></div>
         </div>
     </div>
 
@@ -226,7 +236,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // 3D Background Code
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg-canvas'), antialias: true, alpha: true });
