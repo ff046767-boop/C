@@ -76,9 +76,6 @@
         
         .hero h1 { font-size: clamp(50px, 12vw, 100px); margin-bottom: 20px; text-shadow: 0 0 20px rgba(45, 219, 132, 0.3); }
 
-        .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: linear-gradient(90deg, var(--bg), transparent 15%, transparent 85%, var(--bg)); }
-        .track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
-        
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -90,9 +87,6 @@
         }
         .glass-card:hover { border-color: var(--primary); transform: translateY(-10px); }
         
-        .nft-item { width: 220px; height: 260px; margin: 0 15px; flex-shrink: 0; }
-        .nft-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
-
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; width: 100%; margin-top: 50px; }
 
         .roadmap-container { max-width: 900px; margin-top: 40px; position: relative; text-align: left; }
@@ -120,8 +114,6 @@
             background: #111; padding: 8px 16px; border-radius: 30px; 
             border: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: #ccc;
         }
-
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         footer { padding: 40px; text-align: center; opacity: 0.5; font-size: 14px; }
 
@@ -173,23 +165,8 @@
 
     <section class="hero">
         <h1>CHRONOS</h1>
-        <p style="color: #aaa; max-width: 600px;">The Last Core. A journey through 222 unique time-bending identities on the Abstract network.</p>
+        <p style="color: #aaa; max-width: 600px;">The Last Core. A journey through 222 unique identities on the Abstract network.</p>
     </section>
-
-    <div class="slider-container">
-        <div class="track">
-            <div class="glass-card nft-item"><img src="nft1.jpg" alt="Chronos #1"></div>
-            <div class="glass-card nft-item"><img src="nft2.jpg" alt="Chronos #2"></div>
-            <div class="glass-card nft-item"><img src="nft3.jpg" alt="Chronos #3"></div>
-            <div class="glass-card nft-item"><img src="nft4.jpg" alt="Chronos #4"></div>
-            <div class="glass-card nft-item"><img src="nft5.jpg" alt="Chronos #5"></div>
-            <div class="glass-card nft-item"><img src="nft6.jpg" alt="Chronos #6"></div>
-            <div class="glass-card nft-item"><img src="nft7.jpg" alt="Chronos #7"></div>
-            <div class="glass-card nft-item"><img src="nft8.jpg" alt="Chronos #8"></div>
-            <div class="glass-card nft-item"><img src="nft9.jpg" alt="Chronos #9"></div>
-            <div class="glass-card nft-item"><img src="nft10.jpg" alt="Chronos #10"></div>
-        </div>
-    </div>
 
     <section id="info" class="reveal">
         <h2>Collection Info</h2>
@@ -225,7 +202,7 @@
         <div class="roadmap-container">
             <div class="phase-box">
                 <h3>Phase 1: Genesis Awakening</h3>
-                <p>Establishing the Time-Keepers community. Only 222 limited spots for early believers. Official launch on Abstract chain and OpenSea.</p>
+                <p>Establishing the Time-Keepers community. Only 222 limited spots for early believers. Official launch on Abstract chain.</p>
             </div>
             <div class="phase-box">
                 <h3>Phase 2: Holder Supremacy</h3>
