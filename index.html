@@ -80,8 +80,8 @@
         .track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
         
         .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 10px;
@@ -103,13 +103,18 @@
 
         .phase-box { 
             margin-bottom: 30px; padding: 25px 40px; position: relative; 
-            background: var(--glass); border: 1px solid var(--border); border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .phase-box::before {
             content: ''; position: absolute; left: -5px; top: 32px; width: 10px; height: 10px;
             background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary);
         }
-        .phase-box h3 { color: var(--primary); margin-bottom: 10px; text-transform: uppercase; }
+        .phase-box h3 { color: var(--primary); margin-bottom: 10px; text-transform: uppercase; font-weight: 800; }
+        .phase-box p { line-height: 1.6; color: #efefef; }
 
         .meta-tag {
             background: #111; padding: 8px 16px; border-radius: 30px; 
@@ -127,13 +132,12 @@
         .social-btn.primary { background: white; color: black; border: none; }
         .social-btn:hover { border-color: var(--primary); background: rgba(45, 219, 132, 0.05); }
 
-        /* Minimal Soon Notification */
         .soon-box {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(20px);
             border: 1px solid var(--primary); border-radius: 20px;
             padding: 20px 50px; z-index: 2000; display: none;
-            box-shadow: 0 0 30px rgba(45, 219, 132, 0.15); opacity: 0; transition: 0.3s;
+            box-shadow: 0 0 30px rgba(45, 219, 132, 0.3); opacity: 0; transition: 0.3s;
         }
         .soon-box.active { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         .soon-box h2 { color: var(--primary); letter-spacing: 5px; font-size: 24px; font-weight: 800; }
@@ -192,7 +196,7 @@
         <div class="grid">
             <div class="glass-card" style="padding: 30px;"><h3>Supply</h3><p>222</p></div>
             <div class="glass-card" style="padding: 30px;"><h3>Network</h3><p>Abstract</p></div>
-            <div class="glass-card" style="padding: 30px;"><h3>Status</h3><p>Incoming</p></div>
+            <div class="glass-card" style="padding: 30px;"><h3>Mint Price</h3><p>TBA</p></div>
         </div>
     </section>
 
@@ -204,7 +208,7 @@
             </div>
             <div style="flex: 1.5; min-width: 320px; display: flex; flex-direction: column; gap: 35px;">
                 <div style="background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 24px; border: 1px solid var(--border); backdrop-filter: blur(10px);">
-                    <p style="line-height: 1.8; color: #eee; font-size: 1.15rem;">222 elite entities rising from the Abstract Chain. Chronos is more than a PFP—it's a digital brotherhood for the early adopters of the next frontier.</p>
+                    <p style="line-height: 1.8; color: #eee; font-size: 1.15rem;">222 elite entities rising from the Abstract Chain. Chronos is more than a PFP—it’s a digital brotherhood for the early adopters of the next frontier. High-tier art for a high-tier community. <br><br>Don't just watch the clock. Own it.</p>
                 </div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap; padding-left: 10px;">
                     <span class="meta-tag">Supply: 222</span>
