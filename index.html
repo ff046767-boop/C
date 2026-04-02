@@ -122,10 +122,21 @@
 
         .social-btn { 
             text-decoration: none; padding: 12px 30px; border-radius: 30px; font-weight: 600; transition: 0.3s;
-            border: 1px solid var(--border); background: var(--glass); color: white;
+            border: 1px solid var(--border); background: var(--glass); color: white; cursor: pointer;
         }
         .social-btn.primary { background: white; color: black; border: none; }
         .social-btn:hover { border-color: var(--primary); background: rgba(45, 219, 132, 0.05); }
+
+        /* Minimal Soon Notification */
+        .soon-box {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
+            border: 1px solid var(--primary); border-radius: 20px;
+            padding: 20px 50px; z-index: 2000; display: none;
+            box-shadow: 0 0 30px rgba(45, 219, 132, 0.15); opacity: 0; transition: 0.3s;
+        }
+        .soon-box.active { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        .soon-box h2 { color: var(--primary); letter-spacing: 5px; font-size: 24px; font-weight: 800; }
 
         @media (max-width: 768px) {
             .about-flex { flex-direction: column !important; }
@@ -136,6 +147,10 @@
 <body>
 
     <canvas id="bg-canvas"></canvas>
+
+    <div class="soon-box" id="soonBox">
+        <h2>SOON</h2>
+    </div>
 
     <nav>
         <a href="#" class="logo">
@@ -159,17 +174,6 @@
 
     <div class="slider-container">
         <div class="track">
-            <div class="glass-card nft-item"><img src="nft1.jpg" alt="Chronos #1"></div>
-            <div class="glass-card nft-item"><img src="nft2.jpg" alt="Chronos #2"></div>
-            <div class="glass-card nft-item"><img src="nft3.jpg" alt="Chronos #3"></div>
-            <div class="glass-card nft-item"><img src="nft4.jpg" alt="Chronos #4"></div>
-            <div class="glass-card nft-item"><img src="nft5.jpg" alt="Chronos #5"></div>
-            <div class="glass-card nft-item"><img src="nft6.jpg" alt="Chronos #6"></div>
-            <div class="glass-card nft-item"><img src="nft7.jpg" alt="Chronos #7"></div>
-            <div class="glass-card nft-item"><img src="nft8.jpg" alt="Chronos #8"></div>
-            <div class="glass-card nft-item"><img src="nft9.jpg" alt="Chronos #9"></div>
-            <div class="glass-card nft-item"><img src="nft10.jpg" alt="Chronos #10"></div>
-
             <div class="glass-card nft-item"><img src="nft1.jpg" alt="Chronos #1"></div>
             <div class="glass-card nft-item"><img src="nft2.jpg" alt="Chronos #2"></div>
             <div class="glass-card nft-item"><img src="nft3.jpg" alt="Chronos #3"></div>
@@ -215,18 +219,31 @@
     <section id="roadmap" class="reveal">
         <h2>Roadmap</h2>
         <div class="roadmap-container">
-            <div class="phase-box"><h3>Phase 1: Genesis</h3><p>Launch of community socials and OG role distribution for the first 50 travelers.</p></div>
-            <div class="phase-box"><h3>Phase 2: Convergence</h3><p>Minting starts on Abstract. Official partnership announcements with Web3 tools.</p></div>
-            <div class="phase-box"><h3>Phase 3: Integration</h3><p>Deployment of the rewards system for core community holders.</p></div>
-            <div class="phase-box"><h3>Phase 4: Eternal</h3><p>Metaverse expansion and 3D wearable airdrops for the core community.</p></div>
+            <div class="phase-box">
+                <h3>Phase 1: Genesis Awakening</h3>
+                <p>Establishing the Time-Keepers community. Only 222 limited spots for early believers. Official launch on Abstract chain and OpenSea.</p>
+            </div>
+            <div class="phase-box">
+                <h3>Phase 2: Holder Supremacy</h3>
+                <p>Diamond-hand holder snapshot. Unlocking elite Discord roles and Alpha investment signals to grow our secondary market value.</p>
+            </div>
+            <div class="phase-box">
+                <h3>Phase 3: The $CHRONOS Economy</h3>
+                <p>$CHRONOS token airdrop for holders. Exclusive staking protocol to generate daily passive yields and access to limited merch.</p>
+            </div>
+            <div class="phase-box">
+                <h3>Phase 4: Expansion & Governance</h3>
+                <p>Season 2 evolution drop and Chronos DAO implementation. Empowering the community to decide the future of the ecosystem.</p>
+            </div>
         </div>
     </section>
 
     <section id="social" class="reveal">
         <h2>Join The Core</h2>
         <div style="margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-            <a href="#" class="social-btn primary">Twitter / X</a>
-            <a href="#" class="social-btn">Discord</a>
+            <a href="https://x.com/ChronosNFT" target="_blank" class="social-btn primary">Twitter / X</a>
+            <a href="https://t.me/ChronosNFT" target="_blank" class="social-btn">Telegram</a>
+            <a onclick="showSoon()" class="social-btn">Discord</a>
         </div>
     </section>
 
@@ -269,6 +286,17 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function showSoon() {
+            const soon = document.getElementById('soonBox');
+            soon.style.display = 'block';
+            setTimeout(() => soon.classList.add('active'), 10);
+            
+            setTimeout(() => {
+                soon.classList.remove('active');
+                setTimeout(() => soon.style.display = 'none', 300);
+            }, 2000);
+        }
     </script>
 </body>
 </html>
