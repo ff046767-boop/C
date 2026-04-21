@@ -141,13 +141,13 @@
 
     <section class="hero">
         <h1 class="reveal">CHRONOS</h1>
-        <p class="reveal" style="opacity: 0.7; max-width: 650px; font-size: 1.1rem; line-height: 1.6;">The Last Core. A journey through 222 unique digital identities rising from the Base network. Precision meets identity.</p>
+        <p class="reveal" style="opacity: 0.7; max-width: 650px; font-size: 1.1rem; line-height: 1.6;">The Last Core. A journey through 200 unique digital identities rising from the Base network. Precision meets identity.</p>
     </section>
 
     <section id="info" class="reveal">
         <h2 style="margin-bottom: 10px;">Collection Info</h2>
         <div class="grid">
-            <div class="glass-card"><h3>Supply</h3><p style="font-size: 2rem; font-weight: 800; margin-top: 10px;">222</p></div>
+            <div class="glass-card"><h3>Supply</h3><p style="font-size: 2rem; font-weight: 800; margin-top: 10px;">200</p></div>
             <div class="glass-card"><h3>Network</h3><p style="font-size: 2rem; font-weight: 800; margin-top: 10px;">Base</p></div>
             <div class="glass-card"><h3>Mint Price</h3><p style="font-size: 2rem; font-weight: 800; margin-top: 10px;">TBA</p></div>
         </div>
@@ -161,7 +161,7 @@
             </div>
             <div style="flex: 1.2; background: var(--card-bg); padding: 45px; border-radius: 30px; border: 1px solid var(--border);">
                 <p style="line-height: 1.9; font-size: 1.15rem; opacity: 0.9;">
-                    222 elite entities rising from the Base Chain. Chronos is more than a PFP—it’s a digital brotherhood for the early adopters of the next frontier. <br><br>
+                    200 elite entities rising from the Base Chain. Chronos is more than a PFP—it’s a digital brotherhood for the early adopters of the next frontier. <br><br>
                     High-tier art for a high-tier community. <strong>Don't just watch the clock. Own it.</strong>
                 </p>
                 <div style="display: flex; gap: 10px; margin-top: 30px; flex-wrap: wrap;">
@@ -178,9 +178,9 @@
         <div class="roadmap-container">
             <div class="phase-box">
                 <h3>Phase 1: Genesis Awakening</h3>
-                <p><strong>Launch 222 Cyborgs:</strong> Exclusive NFT collection on @Base.</p>
+                <p><strong>Launch 200 Cyborgs:</strong> Exclusive NFT collection on @Base.</p>
                 <p><strong>Community Build:</strong> Establish core X (Twitter) and Telegram presence.</p>
-                <p><strong>Early Support:</strong> Stealth launch for the first 222 believers.</p>
+                <p><strong>Early Support:</strong> Stealth launch for the first 200 believers.</p>
             </div>
             <div class="phase-box">
                 <h3>Phase 2: The Core Integration</h3>
@@ -218,7 +218,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Three.js Background Logic (Black Particles for Light Mode)
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg-canvas'), antialias: true, alpha: true });
@@ -239,13 +238,11 @@
         }
         animate();
 
-        // Scroll Animation (Reveal)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.15 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Soon Box Logic
         function showSoon() {
             const soon = document.getElementById('soonBox');
             soon.style.display = 'block';
