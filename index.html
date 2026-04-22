@@ -3,246 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHRONOS | THE APEX ON BASE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Chronos NFT | Light Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #000;
-            --bg: #fff;
-            --text: #000;
+        :root { 
+            /* Light Version Constants */
+            --primary: #000000;
+            --bg: #ffffff;
+            --text: #050505;
+            --glass: rgba(0, 0, 0, 0.02);
+            --border: rgba(0, 0, 0, 0.1);
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --shadow: rgba(0, 0, 0, 0.08);
         }
 
-        html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            font-family: 'Space Grotesk', sans-serif; 
-            overflow-x: hidden;
-            line-height: 1.5;
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* Desktop Only Cursor Interaction */
-        @media (pointer: fine) {
-            body { cursor: none; }
-            #cursor { width: 8px; height: 8px; background: #000; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transform: translate(-50%, -50%); }
-            #cursor-ring { width: 40px; height: 40px; border: 1px solid #000; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: all 0.1s; transform: translate(-50%, -50%); }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; }
+        .logo img { height: 38px; border-radius: 4px; }
+
+        .nav-controls { display: flex; align-items: center; gap: 15px; }
+
+        .dropbtn {
+            background: transparent; color: var(--text); padding: 8px 20px;
+            border-radius: 30px; border: 1px solid var(--border); font-weight: bold; cursor: pointer;
+            font-size: 13px; transition: 0.3s;
         }
+        .dropbtn:hover { background: var(--text); color: var(--bg); }
 
-        /* High-End Grain Overlay */
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url(https://grainy-gradients.vercel.app/noise.svg);
-            opacity: 0.05; pointer-events: none; z-index: 9998;
+        .dropdown-content {
+            display: none; position: absolute; right: 0; 
+            background: var(--bg); backdrop-filter: blur(20px);
+            min-width: 180px; border-radius: 15px; margin-top: 10px; 
+            border: 1px solid var(--border); overflow: hidden;
         }
+        .dropdown-content a { color: var(--text); padding: 15px 20px; text-decoration: none; display: block; font-size: 14px; }
+        .dropdown-content a:hover { background: var(--card-bg); }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; }
-
-        /* Navbar */
-        nav { 
-            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; 
-            padding: 20px 6%; z-index: 100; mix-blend-mode: difference; color: white; align-items: center; 
-        }
-        .logo { font-family: 'Syncopate', sans-serif; font-size: clamp(14px, 4vw, 20px); letter-spacing: -1px; }
-
-        /* General Section Styling */
-        section { padding: 100px 8%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-
-        /* Hero Section */
-        .hero { text-align: center; align-items: center; }
-        .hero h1 { 
-            font-family: 'Syncopate', sans-serif; 
-            font-size: clamp(45px, 15vw, 150px); 
-            letter-spacing: -0.05em; line-height: 0.85; margin-bottom: 30px; 
-        }
-        .hero p { max-width: 500px; font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.7; }
-
-        /* About Section */
-        .about-grid { 
-            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; 
-            margin-bottom: 80px; align-items: center;
-        }
-        .about-text h2 { font-family: 'Syncopate', sans-serif; font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.1; margin-bottom: 25px; }
-        .about-text p { font-size: 1.1rem; opacity: 0.7; margin-bottom: 20px; }
-        .about-stats { border-left: 3px solid #000; padding-left: 30px; }
-        .stat-item { margin-bottom: 25px; }
-        .stat-label { font-family: 'Syncopate', sans-serif; font-size: 0.7rem; opacity: 0.5; display: block; letter-spacing: 1px; }
-        .stat-value { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 700; text-transform: uppercase; }
-
-        /* Collection Grid */
-        .grid-title { font-family: 'Syncopate', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 40px; border-bottom: 4px solid #000; display: inline-block; }
-        .collection-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; width: 100%; 
-        }
-        .nft-card { position: relative; overflow: hidden; background: #f8f8f8; aspect-ratio: 1/1; }
-        .nft-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
-        .nft-card:hover .nft-img { filter: grayscale(0%); }
-        .nft-desc { position: absolute; bottom: 20px; left: 20px; opacity: 0; transition: 0.4s; color: white; mix-blend-mode: difference; }
-        .nft-card:hover .nft-desc { opacity: 1; transform: translateY(-5px); }
-
-        /* Roadmap Section (Updated with full text) */
-        .roadmap-wrap { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 30px; margin-top: 40px; 
-        }
-        .phase-card { border-left: 2px solid #000; padding: 25px; background: rgba(255,255,255,0.4); backdrop-filter: blur(10px); }
-        .phase-card h3 { font-family: 'Syncopate', sans-serif; font-size: 0.9rem; background: #000; color: #fff; padding: 5px 12px; display: inline-block; margin-bottom: 15px; }
-        .phase-card strong { display: block; font-size: 1.1rem; color: #000; margin-bottom: 8px; }
-        .phase-card p { font-size: 0.9rem; opacity: 0.8; line-height: 1.5; margin-bottom: 5px; }
-
-        /* Animations */
-        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Button */
-        .cta-btn { 
-            padding: 20px 50px; background: #000; color: #fff; text-decoration: none; 
-            font-family: 'Syncopate', sans-serif; font-size: 11px; border-radius: 50px; 
-            margin-top: 30px; transition: 0.4s; display: inline-block;
+        section { padding: 100px 10%; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        
+        .hero h1 { font-size: clamp(50px, 12vw, 110px); margin-bottom: 20px; letter-spacing: -2px; }
+
+        .glass-card {
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            border: 1px solid var(--border); border-radius: 24px;
+            padding: 40px; transition: 0.4s ease;
         }
-        .cta-btn:hover { background: transparent; color: #000; border: 1px solid #000; }
+        .glass-card:hover { border-color: var(--primary); transform: translateY(-8px); box-shadow: 0 20px 40px var(--shadow); }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; margin-top: 50px; }
 
-        /* Footer */
-        footer { padding: 100px 6% 50px; border-top: 1px solid #eee; }
-        .footer-content { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 40px; }
+        .roadmap-container { max-width: 900px; margin-top: 50px; position: relative; text-align: left; }
+        .roadmap-container::before {
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 1px;
+            background: linear-gradient(to bottom, var(--primary), transparent); opacity: 0.2;
+        }
 
-        /* Responsive Fixes */
+        .phase-box { 
+            margin-bottom: 40px; padding: 30px 40px; position: relative; 
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px;
+        }
+        .phase-box::before {
+            content: ''; position: absolute; left: -5px; top: 38px; width: 10px; height: 10px;
+            background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .phase-box h3 { color: var(--primary); margin-bottom: 15px; text-transform: uppercase; font-weight: 800; font-size: 1.2rem; }
+        .phase-box p { line-height: 1.7; opacity: 0.8; margin-bottom: 10px; }
+        .phase-box strong { color: var(--primary); font-weight: 600; }
+
+        .meta-tag {
+            background: var(--card-bg); padding: 8px 18px; border-radius: 30px; 
+            border: 1px solid var(--border); font-size: 0.8rem; color: var(--text); text-transform: uppercase; font-weight: 600;
+        }
+
+        .social-btn { 
+            text-decoration: none; padding: 14px 35px; border-radius: 35px; font-weight: 600; transition: 0.3s;
+            border: 1px solid var(--border); background: var(--glass); color: var(--text); cursor: pointer;
+        }
+        .social-btn.primary { background: var(--text); color: var(--bg); border: none; }
+        .social-btn:hover { border-color: var(--primary); transform: scale(1.05); }
+
+        .soon-box {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
+            background: var(--bg); border: 1px solid var(--primary); border-radius: 20px;
+            padding: 30px 60px; z-index: 2000; display: none; opacity: 0; transition: 0.3s;
+            box-shadow: 0 0 50px var(--shadow);
+        }
+        .soon-box.active { transform: translate(-50%, -50%) scale(1); opacity: 1; display: block; }
+
+        footer { padding: 60px; text-align: center; opacity: 0.4; font-size: 13px; border-top: 1px solid var(--border); }
+
         @media (max-width: 768px) {
-            section { padding: 80px 6%; }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .about-stats { border-left: none; border-top: 3px solid #000; padding-left: 0; padding-top: 25px; }
-            .collection-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 480px) {
-            .collection-grid { grid-template-columns: 1fr; }
-            .hero h1 { letter-spacing: -2px; }
+            section { padding: 80px 5%; }
+            .hero h1 { font-size: 60px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-ring"></div>
     <canvas id="bg-canvas"></canvas>
 
+    <div class="soon-box" id="soonBox">
+        <h2 style="color: var(--primary); letter-spacing: 8px; font-weight: 900;">SOON</h2>
+    </div>
+
     <nav>
-        <div class="logo">CHRONOS.</div>
-        <div style="font-size: 9px; font-weight: 700; letter-spacing: 1px;">BASE // EMISSION 001</div>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="Chronos Logo"> CHRONOS
+        </a>
+        <div class="nav-controls">
+            <div class="dropdown">
+                <button class="dropbtn">MENU</button>
+                <div class="dropdown-content">
+                    <a href="#info">Collection</a>
+                    <a href="#about">About</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="#social">Community</a>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <section class="hero">
-        <h1 class="reveal">THE LAST<br>CORE.</h1>
-        <p class="reveal">200 elite entities rising from the Base Chain. Precision meets identity.</p>
-        <a href="#about" class="cta-btn reveal">INITIALIZE SYSTEM</a>
+        <h1 class="reveal">CHRONOS</h1>
+        <p class="reveal" style="opacity: 0.7; max-width: 650px; font-size: 1.1rem; line-height: 1.6;">The Last Core. A journey through 200 unique digital identities rising from the Base network. Precision meets identity.</p>
     </section>
 
-    <section id="about">
-        <div class="about-grid">
-            <div class="about-text reveal">
-                <h2>THE DIGITAL<br>BROTHERHOOD</h2>
-                <p>200 elite entities rising from the Base Chain. Chronos is more than a PFP—it’s a digital brotherhood for the early adopters of the next frontier.</p>
-                <p>High-tier art for a high-tier community. Don't just watch the clock. <strong>Own it.</strong></p>
-            </div>
-            <div class="about-stats reveal">
-                <div class="stat-item"><span class="stat-label">CHAIN</span><span class="stat-value">Base Network</span></div>
-                <div class="stat-item"><span class="stat-label">STATUS</span><span class="stat-value">Verified Artifact</span></div>
-                <div class="stat-item"><span class="stat-label">ACCESS</span><span class="stat-value">Eternal Access</span></div>
-            </div>
-        </div>
-
-        <h2 class="grid-title reveal">COLLECTION</h2>
-        <div class="collection-grid">
-            <div class="nft-card reveal"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600" class="nft-img"><div class="nft-desc"><h3>CORE_01</h3><p>RARE</p></div></div>
-            <div class="nft-card reveal"><img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?w=600" class="nft-img"><div class="nft-desc"><h3>CORE_02</h3><p>ELITE</p></div></div>
-            <div class="nft-card reveal"><img src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=600" class="nft-img"><div class="nft-desc"><h3>CORE_03</h3><p>LEGENDARY</p></div></div>
-            <div class="nft-card reveal"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600" class="nft-img"><div class="nft-desc"><h3>CORE_04</h3><p>VOID</p></div></div>
+    <section id="info" class="reveal">
+        <h2 style="margin-bottom: 10px;">Collection Info</h2>
+        <div class="grid">
+            <div class="glass-card"><h3>Supply</h3><p style="font-size: 2rem; font-weight: 800; margin-top: 10px;">200</p></div>
+            <div class="glass-card"><h3>Network</h3><p style="font-size: 2rem; font-weight: 800; margin-top: 10px;">Base</p></div>
+            <div class="glass-card"><h3>Mint Price</h3><p style="font-size: 2rem; font-weight: 800; margin-top: 10px;">TBA</p></div>
         </div>
     </section>
 
-    <section id="roadmap">
-        <h2 class="grid-title reveal">ROADMAP</h2>
-        <div class="roadmap-wrap">
-            <div class="phase-card reveal">
-                <h3>PHASE 1</h3>
-                <strong>Genesis</strong>
-                <p>• Launch: 200 NFTs on Base.</p>
-                <p>• Community: Building X and Telegram presence.</p>
+    <section id="about" class="reveal" style="text-align: left;">
+        <div style="display: flex; gap: 50px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; align-items: center;">
+            <div style="flex: 1; min-width: 300px;">
+                <span class="meta-tag">Identity & Access</span>
+                <h2 style="font-size: clamp(32px, 5vw, 55px); margin-top: 25px; line-height: 1.1;">The <span style="opacity: 0.3;">Chronos</span> Order</h2>
             </div>
-            <div class="phase-card reveal">
-                <h3>PHASE 2</h3>
-                <strong>Integration</strong>
-                <p>• Access: Private Alpha for NFT holders.</p>
-                <p>• Rewards: Snapshot for $CHRONOS ecosystem Rewards.</p>
+            <div style="flex: 1.2; background: var(--card-bg); padding: 45px; border-radius: 30px; border: 1px solid var(--border);">
+                <p style="line-height: 1.9; font-size: 1.15rem; opacity: 0.9;">
+                    200 elite entities rising from the Base Chain. Chronos is more than a PFP—it’s a digital brotherhood for the early adopters of the next frontier. <br><br>
+                    High-tier art for a high-tier community. <strong>Don't just watch the clock. Own it.</strong>
+                </p>
+                <div style="display: flex; gap: 10px; margin-top: 30px; flex-wrap: wrap;">
+                    <span class="meta-tag">Chain: Base</span>
+                    <span class="meta-tag">Status: Verified</span>
+                    <span class="meta-tag">Access: Eternal</span>
+                </div>
             </div>
-            <div class="phase-card reveal">
-                <h3>PHASE 3</h3>
-                <strong>Expansion</strong>
-                <p>• Gen-2: Next-gen collection development.</p>
-                <p>• Growth: Increasing Web3 brand utility.</p>
+        </div>
+    </section>
+
+    <section id="roadmap" class="reveal">
+        <h2 style="margin-bottom: 20px;">The Roadmap</h2>
+        <div class="roadmap-container">
+            <div class="phase-box">
+                <h3>Phase 1: Genesis Awakening</h3>
+                <p><strong>Launch 200 Cyborgs:</strong> Exclusive NFT collection on @Base.</p>
+                <p><strong>Community Build:</strong> Establish core X (Twitter) and Telegram presence.</p>
+                <p><strong>Early Support:</strong> Stealth launch for the first 200 believers.</p>
             </div>
-            <div class="phase-card reveal">
-                <h3>PHASE 4</h3>
-                <strong>Dominion</strong>
-                <p>• Token: Official $CHRONOS launch.</p>
-                <p>• Governance: Moving to a community-led DAO.</p>
+            <div class="phase-box">
+                <h3>Phase 2: The Core Integration</h3>
+                <p><strong>Holder Access:</strong> Private channels and alpha for Chronos holders.</p>
+                <p><strong>Ecosystem Rewards:</strong> Snapshot for $CHRONOS Ecosystem rewards.</p>
+                <p><strong>Partnerships:</strong> Strategic alliances within the Base ecosystem.</p>
             </div>
+            <div class="phase-box">
+                <h3>Phase 3: Visual Augmentation</h3>
+                <p><strong>Gen-2 Expansion:</strong> Developing the next generation of Chronos.</p>
+                <p><strong>Enhanced Utility:</strong> Unlocking new features and benefits for holders.</p>
+                <p><strong>Brand Growth:</strong> Scaling the project’s presence across Web3.</p>
+            </div>
+            <div class="phase-box">
+                <h3>Phase 4: Chronos Dominion</h3>
+                <p><strong>Token Launch:</strong> Introduction of the $CHRONOS utility token.</p>
+                <p><strong>DAO Governance:</strong> Putting the power in the hands of the community.</p>
+                <p><strong>Metaverse Ready:</strong> Preparing Chronos for the future of digital realms.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="social" class="reveal">
+        <h2>Join The Core</h2>
+        <div style="margin-top: 50px; display: flex; gap: 25px; flex-wrap: wrap; justify-content: center;">
+            <a href="https://x.com/ChronosNFT" target="_blank" class="social-btn primary">Twitter / X</a>
+            <a href="https://t.me/ChronosNFT" target="_blank" class="social-btn">Telegram</a>
+            <a onclick="showSoon()" class="social-btn">Discord</a>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <h2 style="font-family: 'Syncopate'; font-size: clamp(1.8rem, 7vw, 3.5rem); letter-spacing: -3px; line-height: 1;">OWN THE<br>CLOCK.</h2>
-            <div style="display: flex; gap: 30px;">
-                <a href="#" style="color: #000; font-weight: 700; text-decoration: none; font-size: 13px;">TWITTER</a>
-                <a href="#" style="color: #000; font-weight: 700; text-decoration: none; font-size: 13px;">TELEGRAM</a>
-            </div>
-        </div>
-        <p style="margin-top: 60px; opacity: 0.3; font-size: 10px; letter-spacing: 1px;">© 2026 CHRONOS PROJECT. BORN ON BASE.</p>
+        <p>&copy; 2026 Chronos Project | Light Edition | Built for Base</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Desktop Cursor Logic
-        if (window.matchMedia("(pointer: fine)").matches) {
-            const cursor = document.getElementById('cursor');
-            const ring = document.getElementById('cursor-ring');
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-                setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 50);
-            });
-        }
-
-        // 3D Background Scene
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg-canvas'), antialias: true, alpha: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        camera.position.z = 30;
 
-        const gridHelper = new THREE.GridHelper(200, 40, 0x000000, 0xdddddd);
-        gridHelper.position.y = -15; scene.add(gridHelper);
-        camera.position.z = 45; camera.position.y = 8;
+        const geometry = new THREE.SphereGeometry(15, 64, 64);
+        const material = new THREE.PointsMaterial({ size: 0.05, color: 0x000000 });
+        const sphere = new THREE.Points(geometry, material);
+        scene.add(sphere);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            sphere.rotation.y += 0.0008;
+            sphere.rotation.x += 0.0003;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function showSoon() {
+            const soon = document.getElementById('soonBox');
+            soon.style.display = 'block';
+            setTimeout(() => soon.classList.add('active'), 10);
+            setTimeout(() => {
+                soon.classList.remove('active');
+                setTimeout(() => soon.style.display = 'none', 300);
+            }, 2000);
+        }
 
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-
-        function animate() {
-            requestAnimationFrame(animate);
-            gridHelper.rotation.y += 0.001;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Reveal on Scroll Logic
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
