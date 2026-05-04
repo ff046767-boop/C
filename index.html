@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHRONOS | THE APEX ON ABSTRACT</title>
+    <title>CHRONOS | THE APEX ON BASE</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #000; --bg: #fff; --text: #000; }
@@ -28,6 +28,7 @@
         .load-bar { position: absolute; top: 0; left: 0; height: 100%; background: #fff; width: 0%; transition: width 0.4s cubic-bezier(0.1, 0, 0.3, 1); }
         
         @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }
+        /* --- END LOADER CSS --- */
 
         @media (pointer: fine) {
             body { cursor: none; }
@@ -78,16 +79,8 @@
         #waitlist { background: transparent; padding: 100px 6%; }
         .form-container { width: 100%; max-width: 500px; background: #fff; border: 2px solid #000; padding: 50px 40px; box-shadow: 20px 20px 0px #f0f0f0; margin: 0 auto; position: relative; }
         .form-title { font-family: 'Syncopate'; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 30px; border-bottom: 5px solid #000; display: inline-block; }
-        .task-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
-        .exe-btn { font-family: 'Syncopate'; font-size: 9px; color: #fff; background: #000; padding: 8px 20px; border-radius: 30px; text-decoration: none; transition: 0.3s; }
-        .exe-btn.done { background: #eee; color: #aaa; pointer-events: none; }
-        .field { margin-bottom: 25px; }
-        .field label { font-family: 'Syncopate'; font-size: 8px; color: #999; display: block; margin-bottom: 5px; }
-        .field input, .field textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #000; padding: 10px 0; font-family: 'Space Grotesk'; font-weight: 700; outline: none; border-radius: 0; }
-        .submit-trigger { width: 100%; padding: 20px; background: #000; color: #fff; border: none; font-family: 'Syncopate'; font-size: 10px; border-radius: 50px; cursor: pointer; transition: 0.3s; }
-        .submit-trigger:disabled { background: #eee; color: #aaa; cursor: not-allowed; }
+        .submit-trigger { width: 100%; padding: 20px; background: #eee; color: #aaa; border: none; font-family: 'Syncopate'; font-size: 10px; border-radius: 50px; cursor: not-allowed; transition: 0.3s; }
 
-        #step-2, #success { display: none; }
         .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         footer { padding: 100px 6% 50px; border-top: 1px solid #eee; }
@@ -117,23 +110,23 @@
 
     <nav>
         <div class="logo">CHRONOS.</div>
-        <div style="font-size: 9px; font-weight: 700; letter-spacing: 1px;">ABSTRACT // EMISSION 001</div>
+        <div style="font-size: 9px; font-weight: 700; letter-spacing: 1px;">BASE // EMISSION 001</div>
     </nav>
 
     <section class="hero">
         <h1 class="reveal">THE LAST<br>CORE.</h1>
-        <p class="reveal">200 elite entities rising from the Abstract Chain. Precision meets identity.</p>
-        <a href="#waitlist" class="cta-btn reveal">JOIN WL</a>
+        <p class="reveal">200 elite entities rising from the Base Chain. Precision meets identity.</p>
+        <a href="#waitlist" class="cta-btn reveal">WL STATUS</a>
     </section>
 
     <section id="about">
         <div class="about-grid">
             <div class="about-text reveal">
                 <h2>THE DIGITAL<br>BROTHERHOOD</h2>
-                <p>200 elite entities rising from the Abstract Chain. Chronos is more than a PFP—it's a digital brotherhood for the early adopters.</p>
+                <p>200 elite entities rising from the Base Chain. Chronos is more than a PFP—it's a digital brotherhood for the early adopters.</p>
             </div>
             <div class="about-stats reveal">
-                <div class="stat-item"><span class="stat-label">CHAIN</span><span class="stat-value">Abstract Network</span></div>
+                <div class="stat-item"><span class="stat-label">CHAIN</span><span class="stat-value">Base Network</span></div>
                 <div class="stat-item"><span class="stat-label">SUPPLY</span><span class="stat-value">200 UNIQUE</span></div>
             </div>
         </div>
@@ -152,7 +145,7 @@
             <div class="phase-card reveal">
                 <h3>PHASE 1</h3>
                 <strong>Genesis</strong>
-                <p>• Launch: 200 NFTs on Abstract.</p>
+                <p>• Launch: 200 NFTs on Base.</p>
                 <p>• Community Expansion & Growth.</p>
             </div>
             <div class="phase-card reveal">
@@ -177,41 +170,12 @@
     </section>
 
     <section id="waitlist">
-        <div class="form-container reveal">
-            <div id="step-1">
-                <h1 class="form-title">JOIN_WL</h1>
-                <div class="task-list">
-                    <div class="task-row">
-                        <p style="font-size: 11px; font-weight: 700;">01. FOLLOW @CHRONOSNFT</p>
-                        <a href="https://x.com/ChronosNFT" target="_blank" class="exe-btn" onclick="completeTask(1)">GO</a>
-                    </div>
-                    <div class="task-row">
-                        <p style="font-size: 11px; font-weight: 700;">02. LIKE & RT PINNED</p>
-                        <a href="https://x.com/ChronosNFT" target="_blank" class="exe-btn" onclick="completeTask(2)">GO</a>
-                    </div>
-                    <div class="task-row" style="border:none;">
-                        <p style="font-size: 11px; font-weight: 700;">03. COMMENT ON PINNED</p>
-                        <a href="https://x.com/ChronosNFT" target="_blank" class="exe-btn" onclick="completeTask(3)">GO</a>
-                    </div>
-                </div>
-                <button id="init-btn" class="submit-trigger" disabled onclick="toStep2()">INITIALIZE ACCESS</button>
+        <div class="form-container reveal" style="text-align: center;">
+            <h1 class="form-title" style="color: #ff0000; border-color: #ff0000;">WL_CLOSED</h1>
+            <div style="border: 1px dashed #eee; padding: 20px; margin-bottom: 25px;">
+                <p style="font-size: 10px; opacity: 0.5; line-height: 1.6;">THE SYSTEM HAS REACHED MAXIMUM CAPACITY. NO FURTHER ENTRIES ARE BEING ACCEPTED AT THIS TIME.</p>
             </div>
-            <div id="step-2">
-                <h1 class="form-title">DATA_ENTRY</h1>
-                <form id="chronos-form">
-                    <input type="hidden" name="access_key" value="314ee3a6-10b1-47ba-82ce-d804ebd620ca">
-                    <div class="field"><label>X_HANDLE</label><input type="text" name="X_User" placeholder="@USER" required></div>
-                    <div class="field"><label>PROOF_LINK</label><input type="url" name="RT_Link" placeholder="HTTPS://" required></div>
-                    <div class="field"><label>ABSTRACT_WALLET</label><input type="text" name="Wallet" placeholder="0X..." required></div>
-                    <div class="field" style="margin-bottom:35px;"><label>INTENT</label><textarea name="Reason" rows="1" placeholder="WHY CHRONOS?" required></textarea></div>
-                    <button type="submit" id="submit-btn" class="submit-trigger">CONFIRM_SUBMISSION</button>
-                </form>
-            </div>
-            <div id="success" style="text-align: center;">
-                <div style="width: 50px; height: 50px; border: 2px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">✓</div>
-                <h1 class="form-title" style="border:none;">ENTRY_LOGGED</h1>
-                <p style="font-size: 11px; opacity: 0.6;">ACCESS GRANTED. WELCOME TO CHRONOS.</p>
-            </div>
+            <button class="submit-trigger" disabled>ACCESS DENIED</button>
         </div>
     </section>
 
@@ -220,7 +184,7 @@
             <h2 style="font-family: 'Syncopate'; font-size: clamp(1.8rem, 7vw, 3.5rem); letter-spacing: -3px; line-height: 1;">OWN THE<br>CLOCK.</h2>
             <a href="https://x.com/ChronosNFT" target="_blank" style="color: #000; font-weight: 700; text-decoration: none; font-size: 13px;">TWITTER</a>
         </div>
-        <p style="margin-top: 60px; opacity: 0.3; font-size: 10px;">© 2026 CHRONOS PROJECT. BORN ON ABSTRACT.</p>
+        <p style="margin-top: 60px; opacity: 0.3; font-size: 10px;">© 2026 CHRONOS PROJECT. BORN ON BASE.</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -229,7 +193,7 @@
             const bar = document.getElementById('load-bar');
             const status = document.getElementById('load-status');
             const loader = document.getElementById('loader');
-            const states = ["CONNECTING...", "SYNCING ABSTRACT...", "READY."];
+            const states = ["CONNECTING...", "SYNCING BASE...", "READY."];
             let progress = 0;
 
             const interval = setInterval(() => {
@@ -273,40 +237,6 @@
                 setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 50);
             });
         }
-
-        let tasks = { 1: false, 2: false, 3: false };
-        function completeTask(id) {
-            tasks[id] = true;
-            const b = document.querySelectorAll('.exe-btn');
-            b[id-1].innerText = "DONE"; b[id-1].classList.add('done');
-            if (tasks[1] && tasks[2] && tasks[3]) document.getElementById('init-btn').disabled = false;
-        }
-        function toStep2() { document.getElementById('step-1').style.display='none'; document.getElementById('step-2').style.display='block'; }
-
-        document.getElementById('chronos-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submit-btn');
-            btn.innerText = "SENDING..."; btn.disabled = true;
-            
-            const formData = new FormData(this);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: json
-            }).then(async (response) => {
-                if (response.status == 200) {
-                    document.getElementById('step-2').style.display = 'none';
-                    document.getElementById('success').style.display = 'block';
-                } else {
-                    btn.innerText = "ERROR. RETRY"; btn.disabled = false;
-                }
-            }).catch(error => {
-                btn.innerText = "ERROR. RETRY"; btn.disabled = false;
-            });
-        });
 
         const obs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
